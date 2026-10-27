@@ -1,0 +1,21 @@
+# Cache do Python
+__pycache__/
+*.py[cod]
+
+# Ambientes virtuais
+venv/
+.venv/
+env/
+
+# Log de eventos gerado pelo caixa
+eventos_caixa.log
+*.log
+
+# Configurações de editores
+.vscode/
+.idea/
+
+# Arquivos do sistema operacional
+Thumbs.db
+desktop.ini
+.DS_Store
