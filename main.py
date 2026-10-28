@@ -1,4 +1,5 @@
 """Interface de console do caixa eletrônico."""
+import caixa
 from caixa.caixa_eletronico import CaixaEletronico
 from caixa.contas import Conta, RepositorioContas
 from caixa.dinheiro import (Denominacao, TipoDinheiro, converter_para_centavos,
@@ -35,14 +36,12 @@ def montar_caixa() -> CaixaEletronico:
     contas.adicionar(Conta("admin", operador=True))
 
     caixa = CaixaEletronico(inventario, contas, ServicoSaque(inventario))
-    caixa.registrar_notificador(NotificadorArquivo("eventos_caixa.log"))
-    caixa.registrar_notificador(NotificadorConsole())
 
     notificador_arquivo = NotificadorArquivo("eventos_caixa.log")
     caixa.registrar_notificador(notificador_arquivo)
+    caixa.registrar_notificador(NotificadorConsole())
 
     return caixa, notificador_arquivo
-
     
 
 def fluxo_saque(caixa: CaixaEletronico, id_conta: str) -> None:
